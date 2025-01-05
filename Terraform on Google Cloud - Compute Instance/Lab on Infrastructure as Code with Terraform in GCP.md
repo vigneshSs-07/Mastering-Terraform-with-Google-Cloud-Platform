@@ -49,27 +49,7 @@
 
      * touch main.tf
 
-* Copy the following code in the main.tf file.
-
-    ```   
-
-        terraform {
-        required_providers {
-            google = {
-            source = "hashicorp/google"
-            version = "5.30.0"
-            }
-        }
-        }
-
-        provider "google" {
-
-        project = "vaulted-journal-420209"
-        region  = "us-east4"
-        zone    = "us-east4-a"
-        }
-
-    ```   
+* Copy the following code in the main.tf file
 
 * Switch to the Cloud Shell and run the terraform init command.
 
@@ -90,52 +70,6 @@
 
 * Save the main.tf file by clicking File > Save.
 
-    ```
-
-        terraform {
-        required_providers {
-            google = {
-            source = "hashicorp/google"
-            version = "5.30.0"
-            }
-        }
-        }
-
-        provider "google" {
-
-        project = "vaulted-journal-420209"
-        region  = "us-east4"
-        zone    = "us-east4-a"
-        }
-
-        resource "google_compute_instance" "terraform" {
-            
-        name         = "vm-instance-terraform"
-        machine_type = "e2-micro"
-        boot_disk {
-            initialize_params {
-            image = "debian-cloud/debian-11"
-            labels = {
-                my_label = "CAA"
-            }
-            }
-        }
-
-        // Local SSD disk
-        scratch_disk {
-            interface = "NVME"
-        }
-
-
-        network_interface {
-            network = "default"
-            access_config {
-            }
-        }
-        }
-
-
-    ```
 
 * Now run the following command to preview if the compute engine will be created.
 
@@ -154,19 +88,7 @@
 
 ###### Adding tags to the compute resource
 
-* Add a tags argument to the instance we just created so that it looks like this:
-
-    ```
-
-    resource "google_compute_instance" "terraform" {
-    name         = "terraform"
-    machine_type = "e2-micro"
-    tags         = ["web", "dev"]
-    # ...
-    }
-
-    ```
-
+* Add a tags argument to the instance we just created so that it looks like this
 
 * Run terraform plan
 
@@ -180,19 +102,6 @@
 
 ###### Editing the machine type without stopping the VM
 
-* Navigate to main.tf and edit the machine_type argument of terraform instance from e2-micro to e2-medium so that it looks like this:
-
-    ```
-
-    resource "google_compute_instance" "terraform" {
-    name         = "terraform"
-    machine_type = "e2-medium"
-    tags         = ["web", "dev"]
-    # ...
-    }
-
-    ```
-
 * Run terraform plan
 
      * terraform plan
@@ -205,30 +114,6 @@
 
 * The machine-type cannot be changed on a running VM. To ensure the VM stops before updating the machine_type, set allow_stopping_for_update argument to true so that the code looks like this:
 
-    ```
-
-    resource "google_compute_instance" "terraform" {
-    name         = "terraform"
-    machine_type = "e2-medium"
-
-    tags         = ["web", "dev"]
-
-    boot_disk {
-        initialize_params {
-        image = "debian-cloud/debian-11"
-        }
-    }
-
-    network_interface {
-        network = "default"
-        access_config {
-        }
-    }
-    allow_stopping_for_update = true
-    }
-
-    ```
-
 * Run terraform plan
 
      * terraform plan
@@ -236,7 +121,6 @@
 * Run terraform apply to update the instance
 
      * terraform apply
-
 
 ### Task 5. Destroy the infrastructure
 
