@@ -1,12 +1,12 @@
->>> **PROFESSIONAL DATA ENGINEER** - *Google Cloud Platform*
+>>> **Mastering Terraform with Google Cloud Platform: In-Depth Learning and Hands-On Labs** 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-> TITLE: "Introduction to Terraform on Google Cloud - Creating a VM instance"
+> TITLE: "Mastering Terraform with Google Cloud Platform  - Cloud SQL with Terraform"
 > 
 > Author:
   >- Name: "Vignesh Sekar S"
   >- Designation: "Data Engineer"
-  >- Tags: [Google Cloud, DataEngineer, Python, PySpark, SQL, BigData]
+  >- Tags: [Google Cloud, Data Engineer, Terraform, Python, PySpark, SQL, DevOps and BigData]
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -132,6 +132,6 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   <div class="footer">
-              copyright © 2023—2024 Cloud & AI Analytics. 
+              copyright © 2024—2025 Cloud & AI Analytics. 
                                       All rights reserved
           </div>
