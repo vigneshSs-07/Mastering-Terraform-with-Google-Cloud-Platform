@@ -12,4 +12,5 @@ This Repo deals with building the infrastructure in Google Cloud Using Terraform
 1. [**Google Cloud provider**](https://registry.terraform.io/providers/hashicorp/google/latest/docs)
 2. [**google**](https://registry.terraform.io/providers/hashicorp/google/latest)
 3. [**github-terraform-provider-google**](https://github.com/hashicorp/terraform-provider-google)
+4. [**Terraform on Google Cloud**](https://cloud.google.com/docs/terraform)
 
