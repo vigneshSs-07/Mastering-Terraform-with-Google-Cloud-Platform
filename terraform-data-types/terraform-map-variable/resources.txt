@@ -1,0 +1,10 @@
+https://spacelift.io/blog/terraform-map-variable
+https://spacelift.io/blog/terraform-functions-expressions-loops
+
+https://spacelift.io/blog/terraform-regex
+https://spacelift.io/blog/terraform-debug
+https://spacelift.io/blog/importing-exisiting-infrastructure-into-terraform
+
+
+https://spacelift.io/blog/terraform-tools
+https://spacelift.io/blog/terraform-best-practices
