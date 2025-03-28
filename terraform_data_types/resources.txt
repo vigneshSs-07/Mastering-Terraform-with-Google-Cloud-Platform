@@ -1,0 +1,5 @@
+https://developer.hashicorp.com/terraform/plugin/framework/handling-data/types
+https://developer.hashicorp.com/terraform/language/expressions/types#string
+https://developer.hashicorp.com/terraform/plugin/framework/handling-data/attributes/single-nested
+
+https://spacelift.io/blog/how-to-use-terraform-variables#what-are-terraform-variables
