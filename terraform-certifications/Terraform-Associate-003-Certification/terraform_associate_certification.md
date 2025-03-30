@@ -43,11 +43,7 @@
 
 ## **Part 2: What to Expect and Roadmap**
 
-![Terraform Associate Certification](./terraform-certifications/imgs/exam_details.png)
-
-![Terraform Associate Certification](./terraform-certifications/imgs/exam_details.png)
-
-![Terraform Associate Certification](./imgs/exam_details.png)
+![Terraform Associate Certification](../img/exam_details.png)
 
 ### [Example](https://developer.hashicorp.com/certifications/infrastructure-automation) details
 
