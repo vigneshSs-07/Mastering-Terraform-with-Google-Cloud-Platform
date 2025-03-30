@@ -63,10 +63,6 @@
 
 ## **Part 3: Personal Experience**
 
-### ***Udemy***
-
-- https://www.udemy.com/share/101ZdI3@-EpZpbU0he-3FVpsZP6FsqlE4mN_ZnxwHsKtRdubOvHtjhbdM4yLjL8IE3MHj4mFhQ==/ 
-
 ### ***Blogs***
 
 - https://spacelift.io/blog/terraform
@@ -76,6 +72,10 @@
 
 - https://developer.hashicorp.com/terraform/tutorials/certification-003/associate-questions 
 - https://www.whizlabs.com/blog/terraform-certification-exam-questions/ 
+
+### ***Udemy***
+
+- https://www.udemy.com/share/101ZdI3@-EpZpbU0he-3FVpsZP6FsqlE4mN_ZnxwHsKtRdubOvHtjhbdM4yLjL8IE3MHj4mFhQ==/ 
 
 
 ### **Cloud & AI Analytics - Playlist**
