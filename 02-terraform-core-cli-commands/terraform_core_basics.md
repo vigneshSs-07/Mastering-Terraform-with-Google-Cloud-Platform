@@ -1,232 +1,104 @@
-# Lab: Terraform Basics
+## Terraform Block
 
-All interactions with Terraform occur via the CLI. Terraform is a local tool (runs on the current machine). The terraform ecosystem also includes providers for many cloud services, and a module repository. Hashicorp also has products to help teams manage Terraform: Terraform Cloud and Terraform Enterprise.
+The terraform {} block contains Terraform settings, including the required providers Terraform will use to provision your infrastructure. For each provider, the source attribute defines an optional hostname, a namespace, and the provider type. Terraform installs providers from the Terraform Registry by default. In this example configuration, the google provider's source is defined as hashicorp/google, which is shorthand for registry.terraform.io/hashicorp/google.
 
-There are a handful of basic terraform commands, including:
+You can also define a version constraint for each provider in the required_providers block. The version attribute is optional, but we recommend using it to enforce the provider version. Without it, Terraform will always use the latest version of the provider, which may introduce breaking changes.
 
-- `terraform init`
-- `terraform fmt`
-- `terraform validate`
-- `terraform plan`
-- `terraform apply`
-- `terraform destroy`
+## Providers
 
-These commands make up the terraform workflow that we will cover in objective 6 of this course. It will be beneficial for us to explore some basic commands now so that work alongside and deploy our configurations.
+The provider block configures the specified provider, in this case google. A provider is a plugin that Terraform uses to create and manage your resources. You can define multiple provider blocks in a Terraform configuration to manage resources from different providers.
 
-- Task 1: Verify Terraform installation and version
-- Task 2: Initialize Terraform Working Directory: `terraform init`
-- Task 3: Validating a Configuration: `terraform validate`
-- Task 4: Genenerating a Terraform Plan: `terraform plan`
-- Task 5: Applying a Terraform Plan: `terraform apply`
-- Task 6: Terraform Destroy: `terraform destroy`
+## Resource
 
-## Task 1: Verify Terraform installation and version
+Use resource blocks to define components of your infrastructure. A resource might be a physical component such as a server, or it can be a logical resource such as a Heroku application.
 
-You can get the version of Terraform running on your machine with the following command:
+Resource blocks have two strings before the block: the resource type and the resource name. In this example, the resource type is google_compute_network and the name is vpc_network. The prefix of the type maps to the name of the provider. In the example configuration, Terraform manages the google_compute_network resource with the google provider. Together, the resource type and resource name form a unique ID for the resource. For example, the ID for your network is google_compute_network.vpc_network.
 
-```bash
-terraform -version
-```
+Resource blocks contain arguments which you use to configure the resource. Arguments can include things like machine sizes, disk image names, or VPC IDs. The Terraform Registry GCP documentation page documents the required and optional arguments for each GCP resource. For example, you can read the google_compute_network documentation to view the resource's supported arguments and available attributes.
 
-If you need to recall a specific subcommand, you can get a list of available commands and arguments with the help argument.
+The GCP provider documents supported resources, including google_compute_network and its supported arguments.
 
-```bash
-terraform -help
-```
+## Initialize the directory
 
-## Task 2: Terraform Init
+When you create a new configuration — or check out an existing configuration from version control — you need to initialize the directory with terraform init. This step downloads the providers defined in the configuration.
 
-Initializing your workspace is used to initialize a working directory containing Terraform configuration files.
-
-Copy the code snippet below into the file called `main.tf` This snippet leverages the random provider, maintained by HashiCorp, to generate a random string.
-
-`main.tf`
-
-```hcl
-resource "random_string" "random" {
-  length = 16
-}
-```
-
-Once saved, you can return to your shell and run the init command shown below. This tells Terraform to scan your code and download anything it needs locally.
+Initialize the directory.
 
 ```bash
 terraform init
 ```
 
-Once your Terraform workspace has been initialized you are ready to begin planning and provisioning your resources.
+Terraform downloads the google provider and installs it in a hidden subdirectory of your current working directory, named .terraform. 
+The terraform init command prints the provider version Terraform installed. 
+Terraform also creates a lock file named .terraform.lock.hcl, which specifies the exact provider versions used to ensure that every Terraform run is consistent. This also allows you to control when you want to upgrade the providers used in your configuration.
 
-> Note: You can validate that your workspace is initialized by looking for the presence of a `.terraform` directory. This is a hidden directory, which Terraform uses to manage cached provider plugins and modules, record which workspace is currently active, and record the last known backend configuration in case it needs to migrate state. This directory is automatically managed by Terraform, and is created during initialization.
+Format and validate the configuration
+We recommend using consistent formatting in all of your configuration files. The terraform fmt command automatically updates configurations in the current directory for readability and consistency.
 
-## Task 3: Validating a Configuration
+Format your configuration. Terraform will print out the names of the files it modified, if any. In this case, your configuration file was already formatted correctly, so Terraform won't return any file names.
 
-The terraform validate command validates the configuration files in your working directory.
+```bash
+terraform fmt
+```
+You can also make sure your configuration is syntactically valid and internally consistent by using the terraform validate command.
 
-To validate there are no syntax problems with our terraform configuration file run a
+Validate your configuration. The example configuration provided above is valid, so Terraform will return a success message.
 
 ```bash
 terraform validate
 ```
 
-```bash
-Success! The configuration is valid.
-```
-
-## Task 4: Genenerating a Terraform Plan
-
-Terraform has a dry run mode where you can preview what Terraform will change without making any actual changes to your infrastructure. This dry run is performed by running a `terraform plan`.
-
-In your terminal, you can run a plan as shown below to see the changes required for Terraform to reach your desired state you defined in your code. This is equivalent to running Terraform in a "dry" mode.
-
-```bash
-terraform plan
-```
-
-If you review the output, you will see 1 change will be made which is to generate a single random string.
-
-```bash
-Terraform will perform the following actions:
-
-  # random_string.random will be created
-  + resource "random_string" "random" {
-      + id          = (known after apply)
-      + length      = 16
-      + lower       = true
-      + min_lower   = 0
-      + min_numeric = 0
-      + min_special = 0
-      + min_upper   = 0
-      + number      = true
-      + result      = (known after apply)
-      + special     = true
-      + upper       = true
-    }
-
-Plan: 1 to add, 0 to change, 0 to destroy.
-```
-
-> Note: Terraform also has the concept of planning out changes to a file. This is useful to ensure you only apply what has been planned previously. Try running a plan again but this time passing an -out flag as shown below.
-
-```bash
-terraform plan -out myplan
-```
-
-This will create a plan file that Terraform can use during an `apply`.
-
-## Task 5: Applying a Terraform Plan
-
-Run the command below to build the resources within your plan file.
-
-```bash
-terraform apply myplan
-```
-
-Once completed, you will see Terraform has successfully built your random string resource based on what was in your plan file.
-
-Terraform can also run an `apply` without a plan file. To try it out, modify your `main.tf` file to create a random string with a length of 10 instead of 16 as shown below:
-
-```hcl
-resource "random_string" "random" {
-  length = 10
-}
-```
-
-and run a `terraform apply`
+### Create infrastructure
+Apply the configuration now with the terraform apply command. Terraform will print output similar to what is shown below. We have truncated some of the output for brevity.
 
 ```bash
 terraform apply
 ```
 
-Notice you will now see a similar output to when you ran a `terraform plan` but you will now be asked if you would like to proceed with those changes. To proceed enter `yes`.
+Terraform will indicate what infrastructure changes it plans to make, and prompt for your approval before it makes those changes.
+
+This output shows the execution plan, describing which actions Terraform will take in order to create infrastructure to match the configuration. The output format is similar to the diff format generated by tools such as Git. The output has a + next to resource "google_compute_network" "vpc_network", meaning that Terraform will create this resource. Beneath that, it shows the attributes that will be set. When the value displayed is (known after apply), it means that the value will not be known until the resource is created.
+
+Terraform will now pause and wait for approval before proceeding. If anything in the plan seems incorrect or dangerous, it is safe to abort here with no changes made to your infrastructure.
+
+In this case the plan looks acceptable, so type yes at the confirmation prompt to proceed. It may take a few minutes for Terraform to provision the network.
+
+### Inspect state
+When you applied your configuration, Terraform wrote data into a file called terraform.tfstate. Terraform stores the IDs and properties of the resources it manages in this file, so that it can update or destroy those resources going forward.
+
+The Terraform state file is the only way Terraform can track which resources it manages, and often contains sensitive information, so you must store your state file securely and distribute it only to trusted team members who need to manage your infrastructure.
+
+ In production, we recommend storing your state remotely with HCP Terraform or Terraform Enterprise. Terraform also supports several other remote backends you can use to store and manage your state.
+
+ Inspect the current state using 
 
 ```bash
-Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
-following symbols:
--/+ destroy and then create replacement
-
-Terraform will perform the following actions:
-
-  # random_string.random must be replaced
--/+ resource "random_string" "random" {
-      ~ id          = "XW>5m{w8Ig96d1A&" -> (known after apply)
-      ~ length      = 16 -> 10 # forces replacement
-      ~ result      = "XW>5m{w8Ig96d1A&" -> (known after apply)
-        # (8 unchanged attributes hidden)
-    }
-
-Plan: 1 to add, 0 to change, 1 to destroy.
-
-Do you want to perform these actions?
-  Terraform will perform the actions described above.
-  Only 'yes' will be accepted to approve.
-
-  Enter a value:
+ terraform show.
 ```
 
-Once complete the random string resource will be created with the attributes specified in the `main.tf` configuration file.
+When Terraform created this network, it also gathered its metadata from the Google provider and recorded it in the state file. Later, you will modify your configuration to reference these values to configure other resources or outputs.
 
-## Task 6: Terraform Destroy
+### Define outputs
+Define an output for the IP address of the instance that Terraform provisions.
 
-The `terraform destroy` command is a convenient way to destroy all remote objects managed by a particular Terraform configuration. It does not delete your configuration file(s), `main.tf`, etc. It destroys the resources built from your Terraform code.
-
-Run the command as shown below to run a planned destroy:
+This defines an output variable named "ip". The name of the variable must conform to Terraform variable naming conventions if it is to be used as an input to other modules. The value field specifies the value, the network_ip of the first network interface attribute of the compute instance.
 
 ```bash
-terraform plan -destroy
+terraform apply
 ```
 
-```bash
-Terraform will perform the following actions:
+### Introduce destructive changes
+A destructive change is a change that requires the provider to replace the existing resource rather than updating it. This usually happens because the cloud provider does not support updating the resource in the way described by your configuration.
 
-  # random_string.random will be destroyed
-  - resource "random_string" "random" {
-      - id          = "1HIQs)moC0" -> null
-      - length      = 10 -> null
-      - lower       = true -> null
-      - min_lower   = 0 -> null
-      - min_numeric = 0 -> null
-      - min_special = 0 -> null
-      - min_upper   = 0 -> null
-      - number      = true -> null
-      - result      = "1HIQs)moC0" -> null
-      - special     = true -> null
-      - upper       = true -> null
-    }
+Changing the disk image of your instance is one example of a destructive change. Edit the boot_disk block inside the vm_instance resource in your configuration file to change the image parameter as follows.
 
-Plan: 0 to add, 0 to change, 1 to destroy.
-```
+The prefix -/+ means that Terraform will destroy and recreate the resource, rather than updating it in-place. Terraform and the GCP provider handle these details for you, and the execution plan reports what Terraform will do.
 
-You will notice that it is planning to destroy your previously created resource. To actually destroy the random string you created, you can run a destroy command as shown below.
+Additionally, the execution plan shows that the disk image change is the modification that forced the instance replacement. Using this information, you can adjust your changes to possibly avoid destructive updates if they are not acceptable.
+
+### Destroy
+The terraform destroy command terminates resources managed by your Terraform project. This command is the inverse of terraform apply in that it terminates all the resources specified in your Terraform state. It does not destroy resources running elsewhere that are not managed by the current Terraform project.
 
 ```bash
 terraform destroy
 ```
-
-```bash
-Terraform will perform the following actions:
-
-  # random_string.random will be destroyed
-  - resource "random_string" "random" {
-      - id          = "1HIQs)moC0" -> null
-      - length      = 10 -> null
-      - lower       = true -> null
-      - min_lower   = 0 -> null
-      - min_numeric = 0 -> null
-      - min_special = 0 -> null
-      - min_upper   = 0 -> null
-      - number      = true -> null
-      - result      = "1HIQs)moC0" -> null
-      - special     = true -> null
-      - upper       = true -> null
-    }
-
-Plan: 0 to add, 0 to change, 1 to destroy.
-
-Do you really want to destroy all resources?
-  Terraform will destroy all your managed infrastructure, as shown above.
-  There is no undo. Only 'yes' will be accepted to confirm.
-
-  Enter a value:
-```
-
-> Note: As similar to when you ran an apply, you will be prompted to proceed with the destroy by entering "yes".
