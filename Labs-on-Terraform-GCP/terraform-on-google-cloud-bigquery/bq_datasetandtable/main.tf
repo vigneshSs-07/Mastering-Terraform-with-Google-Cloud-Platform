@@ -14,7 +14,7 @@ provider "google" {
   project     = var.project_id
   region      = var.region
   zone        = var.zone
-  credentials = file("/home/cloudaianalytics/terraform/dbt-diabetes-usecase-key.json")
+  credentials = file("/home/cloudaianalytics/terraform/***.json")
 }
 
 
