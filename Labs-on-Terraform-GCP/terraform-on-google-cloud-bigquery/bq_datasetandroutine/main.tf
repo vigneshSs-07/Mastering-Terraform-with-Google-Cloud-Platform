@@ -14,7 +14,7 @@ provider "google" {
   project     = var.project_id
   region      = var.region
   zone        = var.zone
-  credentials = file("/home/cloudaianalytics/terraform/WorkingSolution/bq_datasetandroutine/terraform-bq-usecase-key.json")
+  credentials = file("/home/cloudaianalytics/terraform/WorkingSolution/bq_datasetandroutine/***.json")
 }
 
 

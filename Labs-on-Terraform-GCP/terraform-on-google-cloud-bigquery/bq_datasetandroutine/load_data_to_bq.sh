@@ -19,7 +19,7 @@ TABLE_NAME="bq_demo_table"    # <-- TODO: Replace with your BigQuery table name
 # Paths to your local data, schema, and service account key files.
 DATA_FILE="/home/cloudaianalytics/terraform/data/data.json"
 SCHEMA_FILE="/home/cloudaianalytics/terraform/schema/schema.json"
-KEY_FILE="/home/cloudaianalytics/terraform/WorkingSolution/bq_datasetandroutine/terraform-bq-usecase-key.json"
+KEY_FILE="/home/cloudaianalytics/terraform/WorkingSolution/bq_datasetandroutine/***.json"
 
 # Temporary file for the corrected NDJSON data
 NDJSON_DATA_FILE=$(mktemp)
