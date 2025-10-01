@@ -1,0 +1,250 @@
+[
+  {
+    "name": "id",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "Unique identifier for the record"
+  },
+  {
+    "name": "created_at",
+    "type": "TIMESTAMP",
+    "mode": "REQUIRED",
+    "description": "Timestamp when the record was created"
+  },
+  {
+    "name": "updated_at",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE",
+    "description": "Timestamp when the record was last updated"
+  },
+  {
+    "name": "user_id",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "User identifier"
+  },
+  {
+    "name": "user_name",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Display name of the user"
+  },
+  {
+    "name": "email",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "User email address"
+  },
+  {
+    "name": "age",
+    "type": "INTEGER",
+    "mode": "NULLABLE",
+    "description": "User age in years"
+  },
+  {
+    "name": "is_active",
+    "type": "BOOLEAN",
+    "mode": "REQUIRED",
+    "description": "Whether the user is currently active"
+  },
+  {
+    "name": "account_balance",
+    "type": "NUMERIC",
+    "mode": "NULLABLE",
+    "description": "Current account balance with precision"
+  },
+  {
+    "name": "last_login_date",
+    "type": "DATE",
+    "mode": "NULLABLE",
+    "description": "Date of last login (without time)"
+  },
+  {
+    "name": "registration_datetime",
+    "type": "DATETIME",
+    "mode": "NULLABLE",
+    "description": "Registration date and time (without timezone)"
+  },
+  {
+    "name": "preferences",
+    "type": "STRING",
+    "mode": "REPEATED",
+    "description": "Array of user preferences"
+  },
+  {
+    "name": "profile",
+    "type": "RECORD",
+    "mode": "NULLABLE",
+    "description": "Nested user profile information",
+    "fields": [
+      {
+        "name": "first_name",
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": "User's first name"
+      },
+      {
+        "name": "last_name",
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": "User's last name"
+      },
+      {
+        "name": "phone",
+        "type": "STRING",
+        "mode": "NULLABLE",
+        "description": "Phone number"
+      },
+      {
+        "name": "address",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "description": "User address information",
+        "fields": [
+          {
+            "name": "street",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "Street address"
+          },
+          {
+            "name": "city",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "City name"
+          },
+          {
+            "name": "state",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "State or province"
+          },
+          {
+            "name": "zip_code",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "Postal code"
+          },
+          {
+            "name": "country",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "Country name"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "orders",
+    "type": "RECORD",
+    "mode": "REPEATED",
+    "description": "Array of user orders",
+    "fields": [
+      {
+        "name": "order_id",
+        "type": "STRING",
+        "mode": "REQUIRED",
+        "description": "Unique order identifier"
+      },
+      {
+        "name": "order_date",
+        "type": "DATE",
+        "mode": "REQUIRED",
+        "description": "Date when order was placed"
+      },
+      {
+        "name": "total_amount",
+        "type": "NUMERIC",
+        "mode": "REQUIRED",
+        "description": "Total order amount"
+      },
+      {
+        "name": "currency",
+        "type": "STRING",
+        "mode": "REQUIRED",
+        "description": "Currency code (e.g., USD, EUR)"
+      },
+      {
+        "name": "status",
+        "type": "STRING",
+        "mode": "REQUIRED",
+        "description": "Order status (pending, completed, cancelled)"
+      },
+      {
+        "name": "items",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "description": "Items in the order",
+        "fields": [
+          {
+            "name": "product_id",
+            "type": "STRING",
+            "mode": "REQUIRED",
+            "description": "Product identifier"
+          },
+          {
+            "name": "product_name",
+            "type": "STRING",
+            "mode": "REQUIRED",
+            "description": "Product name"
+          },
+          {
+            "name": "quantity",
+            "type": "INTEGER",
+            "mode": "REQUIRED",
+            "description": "Quantity ordered"
+          },
+          {
+            "name": "unit_price",
+            "type": "NUMERIC",
+            "mode": "REQUIRED",
+            "description": "Price per unit"
+          },
+          {
+            "name": "discount",
+            "type": "FLOAT",
+            "mode": "NULLABLE",
+            "description": "Discount percentage applied"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "tags",
+    "type": "STRING",
+    "mode": "REPEATED",
+    "description": "Tags associated with the user"
+  },
+  {
+    "name": "metadata",
+    "type": "JSON",
+    "mode": "NULLABLE",
+    "description": "Additional metadata stored as JSON"
+  },
+  {
+    "name": "score",
+    "type": "FLOAT",
+    "mode": "NULLABLE",
+    "description": "User score or rating"
+  },
+  {
+    "name": "large_number",
+    "type": "BIGNUMERIC",
+    "mode": "NULLABLE",
+    "description": "Large numeric value with high precision"
+  },
+  {
+    "name": "raw_data",
+    "type": "BYTES",
+    "mode": "NULLABLE",
+    "description": "Binary data stored as bytes"
+  },
+  {
+    "name": "geographic_location",
+    "type": "GEOGRAPHY",
+    "mode": "NULLABLE",
+    "description": "Geographic location data"
+  }
+]

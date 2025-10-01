@@ -1,0 +1,479 @@
+[
+  {
+    "id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+    "created_at": "2023-10-27T10:00:00Z",
+    "updated_at": "2023-10-27T11:30:00Z",
+    "user_id": "user_101",
+    "user_name": "alice_wonder",
+    "email": "alice.wonder@example.com",
+    "age": 30,
+    "is_active": true,
+    "account_balance": "1234.56",
+    "last_login_date": "2023-10-26",
+    "registration_datetime": "2022-01-15T09:30:00",
+    "preferences": [
+      "dark_mode",
+      "email_notifications"
+    ],
+    "profile": {
+      "first_name": "Alice",
+      "last_name": "Wonderland",
+      "phone": "111-222-3333",
+      "address": {
+        "street": "123 Rabbit Hole",
+        "city": "Tealand",
+        "state": "CA",
+        "zip_code": "90210",
+        "country": "USA"
+      }
+    },
+    "orders": [
+      {
+        "order_id": "ord_1001",
+        "order_date": "2023-09-15",
+        "total_amount": "150.75",
+        "currency": "USD",
+        "status": "completed",
+        "items": [
+          {
+            "product_id": "prod_A1",
+            "product_name": "Magic Potion",
+            "quantity": 2,
+            "unit_price": "50.25",
+            "discount": 0.1
+          },
+          {
+            "product_id": "prod_B2",
+            "product_name": "Cheshire Cat Toy",
+            "quantity": 1,
+            "unit_price": "25.25",
+            "discount": null
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "premium_user",
+      "frequent_buyer"
+    ],
+    "metadata": "{\"custom_field\": \"custom_value\", \"tier\": \"gold\"}",
+    "score": 4.8,
+    "large_number": "12345678901234567890123456789.123456789",
+    "raw_data": "c29tZV9iaW5hcnlfZGF0YQ==",
+    "geographic_location": "POINT(-122.4194 37.7749)"
+  },
+  {
+    "id": "b2c3d4e5-f6a7-8901-2345-67890abcdef1",
+    "created_at": "2023-10-27T12:00:00Z",
+    "updated_at": null,
+    "user_id": "user_102",
+    "user_name": "bob_builder",
+    "email": "bob.builder@example.com",
+    "age": 45,
+    "is_active": true,
+    "account_balance": "500.00",
+    "last_login_date": "2023-10-27",
+    "registration_datetime": "2021-11-20T14:00:00",
+    "preferences": [
+      "sms_alerts"
+    ],
+    "profile": {
+      "first_name": "Bob",
+      "last_name": "Builder",
+      "phone": "444-555-6666",
+      "address": {
+        "street": "456 Construction Way",
+        "city": "Builderville",
+        "state": "NY",
+        "zip_code": "10001",
+        "country": "USA"
+      }
+    },
+    "orders": [],
+    "tags": [
+      "new_user"
+    ],
+    "metadata": "{\"source\": \"mobile_app\"}",
+    "score": 4.2,
+    "large_number": null,
+    "raw_data": null,
+    "geographic_location": "POINT(-74.0060 40.7128)"
+  },
+  {
+    "id": "c3d4e5f6-a7b8-9012-3456-7890abcdef23",
+    "created_at": "2023-05-10T08:00:00Z",
+    "updated_at": "2023-10-25T18:45:00Z",
+    "user_id": "user_103",
+    "user_name": "charlie_choco",
+    "email": "charlie.choco@example.com",
+    "age": 28,
+    "is_active": false,
+    "account_balance": "0.00",
+    "last_login_date": "2023-08-01",
+    "registration_datetime": "2023-05-10T08:00:00",
+    "preferences": [],
+    "profile": {
+      "first_name": "Charlie",
+      "last_name": "Chocolate",
+      "phone": null,
+      "address": null
+    },
+    "orders": [
+      {
+        "order_id": "ord_1002",
+        "order_date": "2023-06-01",
+        "total_amount": "50.00",
+        "currency": "USD",
+        "status": "cancelled",
+        "items": [
+          {
+            "product_id": "prod_C3",
+            "product_name": "Golden Ticket",
+            "quantity": 1,
+            "unit_price": "50.00",
+            "discount": null
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "inactive"
+    ],
+    "metadata": null,
+    "score": 3.5,
+    "large_number": "99999999999999999999999999999.999999999",
+    "raw_data": null,
+    "geographic_location": null
+  },
+  {
+    "id": "d4e5f6a7-b8c9-0123-4567-890abcdef345",
+    "created_at": "2023-01-01T00:00:00Z",
+    "updated_at": "2023-01-01T00:00:00Z",
+    "user_id": "user_104",
+    "user_name": "diana_prince",
+    "email": "diana.prince@example.com",
+    "age": null,
+    "is_active": true,
+    "account_balance": "10000.00",
+    "last_login_date": null,
+    "registration_datetime": "2023-01-01T00:00:00",
+    "preferences": [
+      "push_notifications",
+      "newsletter"
+    ],
+    "profile": {
+      "first_name": "Diana",
+      "last_name": "Prince",
+      "phone": "777-888-9999",
+      "address": {
+        "street": "1 Paradise Island",
+        "city": "Themyscira",
+        "state": "DC",
+        "zip_code": "20500",
+        "country": "GR"
+      }
+    },
+    "orders": [],
+    "tags": [],
+    "metadata": "{}",
+    "score": null,
+    "large_number": null,
+    "raw_data": null,
+    "geographic_location": null
+  },
+  {
+    "id": "e5f6a7b8-c9d0-1234-5678-90abcdef4567",
+    "created_at": "2023-10-26T14:20:10Z",
+    "updated_at": "2023-10-26T14:20:10Z",
+    "user_id": "user_105",
+    "user_name": "edward_scissor",
+    "email": "edward.scissor@example.com",
+    "age": 25,
+    "is_active": true,
+    "account_balance": "75.50",
+    "last_login_date": "2023-10-26",
+    "registration_datetime": "2020-03-10T18:00:00",
+    "preferences": [
+      "dark_mode"
+    ],
+    "profile": {
+      "first_name": "Edward",
+      "last_name": "Scissorhands",
+      "phone": "123-987-6543",
+      "address": {
+        "street": "789 Suburbia Lane",
+        "city": "Pastel Town",
+        "state": "FL",
+        "zip_code": "33101",
+        "country": "USA"
+      }
+    },
+    "orders": [
+      {
+        "order_id": "ord_1003",
+        "order_date": "2023-10-20",
+        "total_amount": "45.00",
+        "currency": "USD",
+        "status": "completed",
+        "items": [
+          {
+            "product_id": "prod_D4",
+            "product_name": "Hedge Trimmer",
+            "quantity": 1,
+            "unit_price": "45.00",
+            "discount": null
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "artist"
+    ],
+    "metadata": "{\"last_project\": \"ice_sculpture\"}",
+    "score": 4.9,
+    "large_number": null,
+    "raw_data": null,
+    "geographic_location": "POINT(-80.1918 25.7617)"
+  },
+  {
+    "id": "f6a7b8c9-d0e1-2345-6789-0abcdef56789",
+    "created_at": "2022-08-15T11:11:11Z",
+    "updated_at": "2023-09-01T12:00:00Z",
+    "user_id": "user_106",
+    "user_name": "fiona_shrek",
+    "email": "fiona.shrek@example.com",
+    "age": 35,
+    "is_active": true,
+    "account_balance": "250.00",
+    "last_login_date": "2023-09-01",
+    "registration_datetime": "2019-05-05T05:05:05",
+    "preferences": [
+      "email_notifications"
+    ],
+    "profile": {
+      "first_name": "Fiona",
+      "last_name": null,
+      "phone": "555-123-4567",
+      "address": {
+        "street": "1 Swamp Lane",
+        "city": "Far Far Away",
+        "state": "FF",
+        "zip_code": "54321",
+        "country": "Kingdom"
+      }
+    },
+    "orders": [
+      {
+        "order_id": "ord_1004",
+        "order_date": "2023-08-20",
+        "total_amount": "30.00",
+        "currency": "GBP",
+        "status": "completed",
+        "items": [
+          {
+            "product_id": "prod_E5",
+            "product_name": "Onion",
+            "quantity": 10,
+            "unit_price": "3.00",
+            "discount": null
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "royalty"
+    ],
+    "metadata": "{\"family_members\": [\"Shrek\", \"Donkey\"]}",
+    "score": 4.5,
+    "large_number": null,
+    "raw_data": null,
+    "geographic_location": null
+  },
+  {
+    "id": "a7b8c9d0-e1f2-3456-7890-1bcdef67890a",
+    "created_at": "2023-10-27T15:00:00Z",
+    "updated_at": "2023-10-27T15:00:00Z",
+    "user_id": "user_107",
+    "user_name": "gandalf_grey",
+    "email": "gandalf.grey@example.com",
+    "age": 2019,
+    "is_active": true,
+    "account_balance": "9999.99",
+    "last_login_date": "2023-10-27",
+    "registration_datetime": "2001-12-19T10:00:00",
+    "preferences": [
+      "no_notifications"
+    ],
+    "profile": {
+      "first_name": "Gandalf",
+      "last_name": "the Grey",
+      "phone": null,
+      "address": {
+        "street": "Bag End",
+        "city": "Hobbiton",
+        "state": "The Shire",
+        "zip_code": null,
+        "country": "Middle-earth"
+      }
+    },
+    "orders": [],
+    "tags": [
+      "wizard",
+      "istari"
+    ],
+    "metadata": "{\"staff\": \"glamdring\"}",
+    "score": 5.0,
+    "large_number": null,
+    "raw_data": null,
+    "geographic_location": null
+  },
+  {
+    "id": "b8c9d0e1-f2a3-4567-8901-2cdef7890ab1",
+    "created_at": "2023-02-14T09:00:00Z",
+    "updated_at": "2023-07-20T10:00:00Z",
+    "user_id": "user_108",
+    "user_name": "harry_potter",
+    "email": "harry.potter@example.com",
+    "age": 17,
+    "is_active": true,
+    "account_balance": "120.50",
+    "last_login_date": "2023-07-20",
+    "registration_datetime": "2011-07-15T00:00:00",
+    "preferences": [
+      "owl_post"
+    ],
+    "profile": {
+      "first_name": "Harry",
+      "last_name": "Potter",
+      "phone": null,
+      "address": {
+        "street": "4 Privet Drive",
+        "city": "Little Whinging",
+        "state": "Surrey",
+        "zip_code": "KT23",
+        "country": "UK"
+      }
+    },
+    "orders": [
+      {
+        "order_id": "ord_1005",
+        "order_date": "2023-07-15",
+        "total_amount": "20.00",
+        "currency": "Galleon",
+        "status": "completed",
+        "items": [
+          {
+            "product_id": "prod_F6",
+            "product_name": "Nimbus 2000",
+            "quantity": 1,
+            "unit_price": "20.00",
+            "discount": null
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "student",
+      "gryffindor"
+    ],
+    "metadata": "{\"pet\": \"hedwig\"}",
+    "score": 4.7,
+    "large_number": null,
+    "raw_data": null,
+    "geographic_location": null
+  },
+  {
+    "id": "c9d0e1f2-a3b4-5678-9012-3def890abcde",
+    "created_at": "2023-03-03T03:03:03Z",
+    "updated_at": "2023-03-03T03:03:03Z",
+    "user_id": "user_109",
+    "user_name": "iron_man",
+    "email": "tony.stark@example.com",
+    "age": 48,
+    "is_active": false,
+    "account_balance": "1000000000.00",
+    "last_login_date": "2019-04-26",
+    "registration_datetime": "2008-05-02T12:00:00",
+    "preferences": [
+      "ai_assistant"
+    ],
+    "profile": {
+      "first_name": "Tony",
+      "last_name": "Stark",
+      "phone": "212-970-4133",
+      "address": {
+        "street": "10880 Malibu Point",
+        "city": "Malibu",
+        "state": "CA",
+        "zip_code": "90265",
+        "country": "USA"
+      }
+    },
+    "orders": [],
+    "tags": [
+      "avenger",
+      "genius",
+      "billionaire",
+      "playboy",
+      "philanthropist"
+    ],
+    "metadata": "{\"suit_mark\": 85}",
+    "score": 4.9,
+    "large_number": "100000000000000000000000000000.000000000",
+    "raw_data": null,
+    "geographic_location": "POINT(-118.7833 34.0333)"
+  },
+  {
+    "id": "d0e1f2a3-b4c5-6789-0123-4ef90abcdef0",
+    "created_at": "2023-09-01T12:00:00Z",
+    "updated_at": "2023-09-01T12:00:00Z",
+    "user_id": "user_110",
+    "user_name": "jack_sparrow",
+    "email": "captain.jack.sparrow@example.com",
+    "age": 39,
+    "is_active": true,
+    "account_balance": "10.50",
+    "last_login_date": "2023-09-01",
+    "registration_datetime": "2003-07-09T10:00:00",
+    "preferences": [],
+    "profile": {
+      "first_name": "Jack",
+      "last_name": "Sparrow",
+      "phone": null,
+      "address": {
+        "street": "The Black Pearl",
+        "city": "Tortuga",
+        "state": null,
+        "zip_code": null,
+        "country": "Caribbean"
+      }
+    },
+    "orders": [
+      {
+        "order_id": "ord_1006",
+        "order_date": "2023-08-30",
+        "total_amount": "5.00",
+        "currency": "Doubloon",
+        "status": "completed",
+        "items": [
+          {
+            "product_id": "prod_G7",
+            "product_name": "Bottle of Rum",
+            "quantity": 1,
+            "unit_price": "5.00",
+            "discount": null
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "pirate",
+      "captain"
+    ],
+    "metadata": "{\"ship\": \"The Black Pearl\"}",
+    "score": 4.0,
+    "large_number": null,
+    "raw_data": null,
+    "geographic_location": "POINT(-75.0000 18.0000)"
+  }
+]
