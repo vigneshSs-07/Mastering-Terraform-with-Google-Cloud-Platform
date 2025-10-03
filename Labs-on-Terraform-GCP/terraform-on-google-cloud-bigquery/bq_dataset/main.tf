@@ -11,10 +11,9 @@ terraform {
 }
 
 provider "google" {
-  project     = var.project_id
-  region      = var.region
-  zone        = var.zone
-  credentials = file("/home/cloudaianalytics/terraform/***.json")
+  project = var.project_id
+  region  = var.region
+  zone    = var.zone
 }
 
 
