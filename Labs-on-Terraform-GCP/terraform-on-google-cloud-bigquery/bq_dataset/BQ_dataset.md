@@ -1,11 +1,22 @@
-# BigQuery Dataset Deployment Guide (User Account)
+>>> **MASTERING TERRAFORM WITH GOOGLE CLOUD PLATFORM**
+------------------------
+
+> TITLE: "**BigQuery Dataset Deployment Guide (User Account)**"
+> 
+> Author:
+  >- Name: "Vignesh Sekar S"
+  >- Designation: "Data Engineer"
+  >- Tags: [Google Cloud, DataEngineer, Terraform, BigQuery, SQL, IAC]
+
+-----------------------------------------------------------------------------------------------------------------------
+
 
 This guide provides a step-by-step walkthrough for deploying a BigQuery dataset using Terraform.
 
-This workflow begins with a user account to set up the necessary permissions and then uses a dedicated service account for the main infrastructure tasks, which is a security best practice.
+This workflow uses an authenticated user account to run Terraform. The Terraform configuration will then create a BigQuery dataset and a dedicated service account (`bqowner`) which is granted `dataOwner` permissions on that dataset.
 
 The process is divided into three main stages:
-1.  **Setup**: Preparing your local environment and creating a dedicated Service Account for Terraform.
+1.  **Setup**: Preparing your local environment and authenticating your user account.
 2.  **Infrastructure Deployment**: Running Terraform to create the Google Cloud resources.
 3.  **Cleanup**: Destroying the created resources.
 
@@ -18,7 +29,7 @@ Before you begin, ensure you have the following tools installed and configured:
 
 ## Step 1: Authenticate Your User Account
 
-First, you need to log in to Google Cloud with your personal user account. This account must have sufficient permissions in the project (`myorg-cloudai-gcp1722`) to create service accounts and assign IAM roles.
+First, you need to log in to Google Cloud with your personal user account. This account must have sufficient permissions in the project (`myorg-cloudai-gcp1722`) to create BigQuery datasets, service accounts, and assign IAM roles. The `roles/editor` or `roles/owner` predefined roles are sufficient.
 
 Run the following command and follow the prompts in your browser:
 
@@ -32,27 +43,7 @@ Next, set your active project:
 gcloud config set project myorg-cloudai-gcp1722
 ```
 
-## Step 2: Create a Dedicated Service Account for Terraform
-
-For security and auditability, Terraform should run using a dedicated service account. A setup script like `gcp_iam.sh` can automate the creation of this service account and grant it the necessary permissions.
-
-The script should:
-1.  Create a service account (e.g., `terraform-bq-usecase`).
-2.  Grant it the necessary roles (`bigquery.admin`, `iam.serviceAccountAdmin`, etc.) to manage the required resources.
-3.  Create a JSON key file for this service account, which Terraform will use to authenticate.
-
-Make the script executable and run it:
-
-```bash
-chmod +x gcp_iam.sh
-./gcp_iam.sh
-```
-
-After the script completes, a key file (e.g., `terraform-bq-usecase-key.json`) will be created in the current directory.
-
-**Security Note**: This key file contains sensitive credentials. Do not commit it to version control. Ensure it is listed in your `.gitignore` file.
-
-## Step 3: Deploy the BigQuery Dataset with Terraform
+## Step 2: Deploy the BigQuery Dataset with Terraform
 
 Now you will use Terraform to create the BigQuery dataset as defined in your `.tf` files. The Terraform provider should be configured to use the key file generated in the previous step.
 
@@ -99,4 +90,11 @@ terraform destroy -auto-approve
 
 This will remove the BigQuery dataset created by Terraform.
 
-**Note**: This command will **not** delete the `terraform-bq-usecase` service account itself, as it was created by the `gcp_iam.sh` script outside of Terraform's management. You can delete it manually from the IAM & Admin section of the Google Cloud Console if desired.
+
+-----------------------------------------------------------------------------------------------------------------------
+
+
+  <div class="footer">
+              copyright © 2024—2025 Cloud & AI Analytics. 
+                                      All rights reserved
+          </div>
