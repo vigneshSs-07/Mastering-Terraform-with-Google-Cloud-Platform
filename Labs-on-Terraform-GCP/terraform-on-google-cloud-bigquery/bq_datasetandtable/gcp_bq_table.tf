@@ -1,5 +1,5 @@
 resource "google_bigquery_dataset" "demo_dataset" {
-  dataset_id            = "bq_demo_dataset_1"
+  dataset_id            = var.dataset_id
   friendly_name         = "BigQuery Demo Dataset"
   description           = "This is a demo dataset for BigQuery"
   location              = var.region
@@ -13,7 +13,7 @@ resource "google_bigquery_dataset" "demo_dataset" {
 
   access {
     role          = "roles/bigquery.dataOwner"
-    user_by_email = google_service_account.bqowner.email 
+    user_by_email = google_service_account.bqowner.email
   }
 
   delete_contents_on_destroy = true
@@ -24,30 +24,30 @@ resource "google_bigquery_dataset" "demo_dataset" {
 resource "google_bigquery_dataset_iam_member" "terraform_sa_dataset_owner" {
   project    = var.project_id
   dataset_id = google_bigquery_dataset.demo_dataset.dataset_id
-  role       = "roles/bigquery.dataOwner"
+  role       = "roles/bigquery.dataViewer"
   member     = "user:${var.sec_user_by_email}"
 }
 
 
 resource "google_bigquery_table" "demo_table" {
-  dataset_id    = google_bigquery_dataset.demo_dataset.dataset_id
-  table_id      = "bq_demo_table"
-  friendly_name = "BigQuery Demo Table"
-  description   = "Demo table for BigQuery"
-  expiration_time = null 
+  dataset_id      = google_bigquery_dataset.demo_dataset.dataset_id
+  table_id        = var.table_id
+  friendly_name   = "BigQuery Demo Table"
+  description     = "Demo table for BigQuery"
+  expiration_time = null
 
   time_partitioning {
     type  = "DAY"
-    field = "created_at"
+    field = var.partioning_keys
   }
 
-  clustering = ["user_id", "is_active", "age"]
+  clustering = var.table_clustering_keys
 
   labels = {
     environment = var.environment
   }
 
-  schema = file("schema/schema.json")
+  schema = file("/home/cloudaianalytics/terraform/schema/schema.json")
 
   deletion_protection = false
 

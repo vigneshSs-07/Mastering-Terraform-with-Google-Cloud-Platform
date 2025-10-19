@@ -13,13 +13,13 @@
 # The project ID is taken from your service account key file.
 PROJECT_ID="myorg-cloudai-gcp1722"
 DATASET_ID="bq_demo_dataset_1"  # <-- TODO: Replace with your BigQuery dataset ID
-TABLE_NAME="bq_demo_table"    # <-- TODO: Replace with your BigQuery table name
+TABLE_NAME="bq_demo_table_1"    # <-- TODO: Replace with your BigQuery table name
 
 # --- File Paths ---
 # Paths to your local data, schema, and service account key files.
 DATA_FILE="/home/cloudaianalytics/terraform/data/data.json"
-SCHEMA_FILE="/home/cloudaianalytics/terraform/schema/schema.json"
-KEY_FILE="/home/cloudaianalytics/terraform/WorkingSolution/bq_datasetandview/terraform-bq-usecase-key.json"
+SCHEMA_FILE="/home/cloudaianalytics/terraform/schema/schema.json"''
+KEY_FILE="/home/cloudaianalytics/terraform/WorkingSolution/bq_datasetandtable/terraform-bq-usecase-key.json"
 
 # Temporary file for the corrected NDJSON data
 NDJSON_DATA_FILE=$(mktemp)

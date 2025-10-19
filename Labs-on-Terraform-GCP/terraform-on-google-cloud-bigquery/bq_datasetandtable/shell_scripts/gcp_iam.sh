@@ -11,6 +11,10 @@ gcloud iam service-accounts describe "${TERRAFORM_SA_EMAIL}" --project "${PROJEC
     --display-name="Terraform and BQ Usecase SA" \
     --project "${PROJECT_ID}"
 
+echo "--- Waiting for SA propagation... ---"
+# Add a delay to allow the new service account to propagate through Google's IAM system.
+sleep 10
+
 echo "--- Granting project-level roles to '${TERRAFORM_SA_EMAIL}' ---"
 # Grant the necessary roles to the Terraform service account
 # 1. projectIamAdmin: Allows managing IAM policies on the project (required for google_project_iam_member)
@@ -40,7 +44,8 @@ gcloud projects add-iam-policy-binding "${PROJECT_ID}" --quiet \
 
 
 echo "--- Creating and downloading key for '${TERRAFORM_SA_EMAIL}' ---"
-gcloud iam service-accounts keys create ~/terraform/WorkingSolution/bq_datasetandview/terraform-bq-usecase-key.json \
+gcloud iam service-accounts keys create ~/terraform/WorkingSolution/bq_datasetandtable/terraform-bq-usecase-key.json \
+   --project ${PROJECT_ID}\
     --iam-account ${TERRAFORM_SA_EMAIL}
 
 
